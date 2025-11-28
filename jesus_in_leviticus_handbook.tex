@@ -74,12 +74,23 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% ========== QUOTE ENVIRONMENT ==========
+% ========== SCRIPTURE ENVIRONMENT ==========
+\definecolor{scripturebg}{RGB}{248, 246, 242}
+
 \newenvironment{scripture}{%
-    \begin{quoting}[leftmargin=1.5em, rightmargin=1.5em, vskip=0.5em]
-    \itshape\color{quotecolor}
+    \par\vspace{0.8em}%
+    \begin{quote}%
+    \itshape\color{quotecolor}%
+    \fontsize{10.5}{14}\selectfont%
 }{%
-    \end{quoting}
+    \end{quote}%
+    \vspace{0.4em}%
+}
+
+% Scripture reference: right-aligned, small caps
+\newcommand{\scriptureref}[1]{%
+    \par\vspace{0.2em}%
+    \hfill{\normalfont\footnotesize\textsc{--- #1}}%
 }
 
 % ========== HEBREW COMMAND ==========
@@ -113,8 +124,8 @@
     \vspace{3cm}
 
     {\itshape ``These are a shadow of things to come,\\
-    but the substance is of Christ.''\\[0.3cm]
-    --- Colossians 2:17\par}
+    but the substance is of Christ.''\\[0.5cm]
+    \normalfont\small\textsc{Colossians 2:17}\par}
 
     \vfill
 
@@ -140,11 +151,13 @@
 The whole Bible has one magnificent centre --- the Person and Work of Christ. From Genesis to Revelation every line moves toward Him and finds its completion in Him.
 
 \begin{scripture}
-``You search the Scriptures, for in them you think you have eternal life; and these are they which testify of Me. But you are not willing to come to Me that you may have life.'' --- John 5:39--40
+``You search the Scriptures, for in them you think you have eternal life; and these are they which testify of Me. But you are not willing to come to Me that you may have life.''
+\scriptureref{John 5:39--40}
 \end{scripture}
 
 \begin{scripture}
-``Beginning at Moses and all the Prophets, He expounded to them in all the Scriptures the things concerning Himself.'' --- Luke 24:27
+``Beginning at Moses and all the Prophets, He expounded to them in all the Scriptures the things concerning Himself.''
+\scriptureref{Luke 24:27}
 \end{scripture}
 
 \subsection{Veil and Vision}
@@ -164,13 +177,15 @@ The same Scriptures that once concealed Him now reveal the glory of Christ, the 
 The Old Testament is divided into three great sections: Law, Prophets, and Psalms (Writings). Jesus declared that everything written in the Law of Moses, the Prophets, and the Psalms spoke concerning Him.
 
 \begin{scripture}
-``All things must be fulfilled which were written in the Law of Moses, and in the Prophets, and in the Psalms, concerning Me.'' --- Luke 24:44
+``All things must be fulfilled which were written in the Law of Moses, and in the Prophets, and in the Psalms, concerning Me.''
+\scriptureref{Luke 24:44}
 \end{scripture}
 
 \subsection{Christ and the Law}
 
 \begin{scripture}
-``Do not think that I came to destroy the Law or the Prophets; I did not come to destroy but to fulfill.'' --- Matthew 5:17--18
+``Do not think that I came to destroy the Law or the Prophets; I did not come to destroy but to fulfill.''
+\scriptureref{Matthew 5:17--18}
 \end{scripture}
 
 The Law revealed God's holiness and demanded righteousness. Christ fulfilled it by perfect obedience and by offering Himself as the true sacrifice. The Law demanded; Christ delivered. The Law revealed sin; Christ removed it. The Law showed the way; Christ became the Way.
@@ -214,7 +229,8 @@ Depends on reality & Self-existent \\
 \end{center}
 
 \begin{scripture}
-``These are a shadow of things to come, but the substance is of Christ.'' --- Colossians 2:17
+``These are a shadow of things to come, but the substance is of Christ.''
+\scriptureref{Colossians 2:17}
 \end{scripture}
 
 \subsection{Reality of Duality}
@@ -302,7 +318,8 @@ Fear & Access \\
 \subsection{Key Verse}
 
 \begin{scripture}
-``Be ye holy, for I am holy.'' --- Leviticus 11:44; 19:2; 20:7
+``Be ye holy, for I am holy.''
+\scriptureref{Leviticus 11:44; 19:2; 20:7}
 \end{scripture}
 
 \textbf{Theme:} Holiness through Atonement.
@@ -314,7 +331,8 @@ Leviticus reveals that God's justice system stands upon two unchanging pillars: 
 \subsection{The Law --- The Holy Demand}
 
 \begin{scripture}
-``The soul that sinneth, it shall die.'' --- Ezekiel 18:4
+``The soul that sinneth, it shall die.''
+\scriptureref{Ezekiel 18:4}
 \end{scripture}
 
 The Law exposes sin but cannot cleanse it; it judges but cannot justify. It reveals God's absolute holiness and our desperate need for a Redeemer.
@@ -322,7 +340,8 @@ The Law exposes sin but cannot cleanse it; it judges but cannot justify. It reve
 \subsection{The Sacrifice --- The Merciful Provision}
 
 \begin{scripture}
-``Without shedding of blood there is no remission.'' --- Hebrews 9:22
+``Without shedding of blood there is no remission.''
+\scriptureref{Hebrews 9:22}
 \end{scripture}
 
 Where the Law condemns, the Sacrifice intercedes. The altar becomes the meeting place of justice and grace.
@@ -370,7 +389,8 @@ When we begin studying the offerings, we must remember that Christ Himself is in
 The five offerings are not five separate doctrines, but five windows into the same glorious Person --- each revealing one facet of His inexhaustible beauty.
 
 \begin{scripture}
-``Behold! The Lamb of God who takes away the sin of the world!'' --- John 1:29
+``Behold! The Lamb of God who takes away the sin of the world!''
+\scriptureref{John 1:29}
 \end{scripture}
 
 \section{God's Order and Man's Order}
@@ -442,7 +462,8 @@ At Calvary, the fragrance of His obedience and the fire of judgment met in one p
 \chapter{The Priesthood}
 
 \begin{scripture}
-``We have such a High Priest, who is seated at the right hand of the throne of the Majesty in the heavens.'' --- Hebrews 8:1
+``We have such a High Priest, who is seated at the right hand of the throne of the Majesty in the heavens.''
+\scriptureref{Hebrews 8:1}
 \end{scripture}
 
 Aaron's priesthood was temporary and symbolic. Christ's priesthood is eternal and real --- the fulfillment of all Levitical shadows.
@@ -599,7 +620,8 @@ Memory of sin & Continual & Sin remembered no more \\
 The \heb{כַּפֹּרֶת} (\textit{kapporet}, mercy seat) was the golden lid covering the ark of the covenant. Beneath lay the tablets of the law --- God's righteous standard; above hovered His glory. Only when blood was sprinkled did judgment and mercy meet.
 
 \begin{scripture}
-``Righteousness and peace have kissed each other.'' --- Psalm 85:10
+``Righteousness and peace have kissed each other.''
+\scriptureref{Psalm 85:10}
 \end{scripture}
 
 At the Cross, the blood of Christ satisfied the law beneath and revealed the glory above. The place of judgment became the throne of grace.
@@ -617,7 +639,8 @@ At the Cross, the blood of Christ satisfied the law beneath and revealed the glo
 \end{enumerate}
 
 \begin{scripture}
-``By one offering He has perfected forever those who are being sanctified.'' --- Hebrews 10:14
+``By one offering He has perfected forever those who are being sanctified.''
+\scriptureref{Hebrews 10:14}
 \end{scripture}
 
 
@@ -633,7 +656,8 @@ At the Cross, the blood of Christ satisfied the law beneath and revealed the glo
 After the atonement of Leviticus 16, the next great section unfolds the principle of holiness --- what it means to live as a cleansed and separated people.
 
 \begin{scripture}
-``For I am the LORD your God: you shall therefore sanctify yourselves, and you shall be holy; for I am holy.'' --- Leviticus 11:44
+``For I am the LORD your God: you shall therefore sanctify yourselves, and you shall be holy; for I am holy.''
+\scriptureref{Leviticus 11:44}
 \end{scripture}
 
 Atonement makes access possible; holiness makes fellowship continual.
@@ -687,7 +711,8 @@ Leprosy in Scripture is a vivid picture of sin:
 \section{The Sanctity of Blood (Leviticus 17)}
 
 \begin{scripture}
-``For the life of the flesh is in the blood, and I have given it to you upon the altar to make atonement for your souls.'' --- Leviticus 17:11
+``For the life of the flesh is in the blood, and I have given it to you upon the altar to make atonement for your souls.''
+\scriptureref{Leviticus 17:11}
 \end{scripture}
 
 This verse is the theological center of Leviticus. Life belongs to God, and blood --- the carrier of life --- must be treated as sacred.
@@ -697,7 +722,8 @@ This verse is the theological center of Leviticus. Life belongs to God, and bloo
 Chapters 18--20 move from ceremonial purity to moral purity --- from the shadow to the substance of holiness.
 
 \begin{scripture}
-``You shall be holy to Me, for I the LORD am holy, and have separated you from the peoples, that you should be Mine.'' --- Leviticus 20:26
+``You shall be holy to Me, for I the LORD am holy, and have separated you from the peoples, that you should be Mine.''
+\scriptureref{Leviticus 20:26}
 \end{scripture}
 
 \section{Christ the Fulfillment of Cleansing}
@@ -730,7 +756,8 @@ Cleansing in Leviticus was ritual and repeated; in Christ, it is spiritual and c
 Leviticus 23 presents the Feasts of the Lord --- not Israel's feasts, but Yahweh's appointed times (\heb{מוֹעֲדִים}, \textit{mo'adim}). They are the divine blueprint of God's redemptive history.
 
 \begin{scripture}
-``These are the appointed feasts of the LORD, holy convocations, which you shall proclaim in their seasons.'' --- Leviticus 23:4
+``These are the appointed feasts of the LORD, holy convocations, which you shall proclaim in their seasons.''
+\scriptureref{Leviticus 23:4}
 \end{scripture}
 
 \section{The Seven Feasts}
@@ -759,7 +786,8 @@ The first four feasts were fulfilled in Christ's first coming; the last three wi
 \subsection{Passover (Leviticus 23:4--5)}
 
 \begin{scripture}
-``When I see the blood, I will pass over you.'' --- Exodus 12:13
+``When I see the blood, I will pass over you.''
+\scriptureref{Exodus 12:13}
 \end{scripture}
 
 \begin{center}
@@ -783,7 +811,8 @@ No leaven = Absence of corruption. Christ's body ``saw no corruption'' (Acts 2:2
 Held on the very morning of Christ's resurrection.
 
 \begin{scripture}
-``Now is Christ risen from the dead, and become the firstfruits of them that slept.'' --- 1 Corinthians 15:20
+``Now is Christ risen from the dead, and become the firstfruits of them that slept.''
+\scriptureref{1 Corinthians 15:20}
 \end{scripture}
 
 \subsection{Pentecost (Leviticus 23:15--22)}
@@ -804,17 +833,20 @@ The trumpet blast symbolizes:
 \subsection{Day of Atonement (Leviticus 23:26--32)}
 
 \begin{scripture}
-``They shall look on Him whom they pierced.'' --- Zechariah 12:10
+``They shall look on Him whom they pierced.''
+\scriptureref{Zechariah 12:10}
 \end{scripture}
 
 \subsection{Feast of Tabernacles (Leviticus 23:33--44)}
 
 \begin{scripture}
-``The Word became flesh and tabernacled among us.'' --- John 1:14
+``The Word became flesh and tabernacled among us.''
+\scriptureref{John 1:14}
 \end{scripture}
 
 \begin{scripture}
-``Behold, the tabernacle of God is with men.'' --- Revelation 21:3
+``Behold, the tabernacle of God is with men.''
+\scriptureref{Revelation 21:3}
 \end{scripture}
 
 \section{The Theology of the Feasts}
@@ -848,7 +880,8 @@ Leviticus 25--26 concludes the covenantal section by revealing three great theol
 \end{enumerate}
 
 \begin{scripture}
-``The land is Mine; for you are strangers and sojourners with Me.'' --- Leviticus 25:23
+``The land is Mine; for you are strangers and sojourners with Me.''
+\scriptureref{Leviticus 25:23}
 \end{scripture}
 
 \section{Hebrew Word Studies}
@@ -870,7 +903,8 @@ Leviticus 25--26 concludes the covenantal section by revealing three great theol
 \section{The Year of Jubilee}
 
 \begin{scripture}
-``You shall hallow the fiftieth year, and proclaim liberty throughout all the land to all its inhabitants.'' --- Leviticus 25:10
+``You shall hallow the fiftieth year, and proclaim liberty throughout all the land to all its inhabitants.''
+\scriptureref{Leviticus 25:10}
 \end{scripture}
 
 \subsection{The Threefold Liberation}
@@ -894,7 +928,8 @@ The Jubilee trumpet blew on the Day of Atonement --- liberty rooted in atonement
 The laws of redemption introduce one of the most beautiful titles of Christ --- the \heb{גֹּאֵל} (\textit{Go'el}, Redeemer).
 
 \begin{scripture}
-``I know that my Redeemer lives.'' --- Job 19:25
+``I know that my Redeemer lives.''
+\scriptureref{Job 19:25}
 \end{scripture}
 
 \begin{center}
@@ -930,7 +965,8 @@ Fulfillment & Spiritual rest (Matt.\ 11:28) & Full redemption (Luke 4:18--19) \\
 \subsection{Blessings for Obedience (26:1--13)}
 
 \begin{scripture}
-``I will walk among you, and be your God, and you shall be My people.'' --- Leviticus 26:12
+``I will walk among you, and be your God, and you shall be My people.''
+\scriptureref{Leviticus 26:12}
 \end{scripture}
 
 \subsection{Discipline for Disobedience (26:14--39)}
@@ -938,13 +974,15 @@ Fulfillment & Spiritual rest (Matt.\ 11:28) & Full redemption (Luke 4:18--19) \\
 Even in judgment, mercy prevailed:
 
 \begin{scripture}
-``Yet for all that... I will not cast them away... I will remember My covenant.'' --- Leviticus 26:44--45
+``Yet for all that... I will not cast them away... I will remember My covenant.''
+\scriptureref{Leviticus 26:44--45}
 \end{scripture}
 
 \section{Christ's Fulfillment}
 
 \begin{scripture}
-``The Spirit of the Lord is upon Me... to preach deliverance to the captives, to proclaim the acceptable year of the Lord.'' --- Luke 4:18--19
+``The Spirit of the Lord is upon Me... to preach deliverance to the captives, to proclaim the acceptable year of the Lord.''
+\scriptureref{Luke 4:18--19}
 \end{scripture}
 
 Christ is our eternal Jubilee. He releases us from sin's slavery, restores our lost inheritance, and reconciles us to the Father.
@@ -962,7 +1000,8 @@ Christ is our eternal Jubilee. He releases us from sin's slavery, restores our l
 Leviticus ends not with the sacrifices, feasts, or jubilees, but with vows and dedications --- the voluntary acts of consecration.
 
 \begin{scripture}
-``Behold, I come to do Your will, O God.'' --- Hebrews 10:7
+``Behold, I come to do Your will, O God.''
+\scriptureref{Hebrews 10:7}
 \end{scripture}
 
 Having revealed how sinners draw near through blood, God now shows how the redeemed respond through devotion. Atonement removes the barrier; holiness builds the relationship; dedication expresses love's response.
@@ -1003,19 +1042,22 @@ VII & Summary & 34 \\
 \section{Devoted Things --- the \heb{חֵרֶם}}
 
 \begin{scripture}
-``Nothing that a man devotes to the LORD, whether man or beast or field, shall be sold or redeemed; every devoted thing is most holy to the LORD.'' --- Leviticus 27:28
+``Nothing that a man devotes to the LORD, whether man or beast or field, shall be sold or redeemed; every devoted thing is most holy to the LORD.''
+\scriptureref{Leviticus 27:28}
 \end{scripture}
 
 The \heb{חֵרֶם} referred to something irreversibly set apart --- either for destruction (in judgment) or for God's exclusive use. All \heb{חֵרֶם} points to the absolute claims of holiness.
 
 \begin{scripture}
-``For their sakes I sanctify Myself.'' --- John 17:19
+``For their sakes I sanctify Myself.''
+\scriptureref{John 17:19}
 \end{scripture}
 
 \section{The Law of the Tithe}
 
 \begin{scripture}
-``All the tithe of the land, whether seed of the land or fruit of the tree, is the LORD's; it is holy to the LORD.'' --- Leviticus 27:30
+``All the tithe of the land, whether seed of the land or fruit of the tree, is the LORD's; it is holy to the LORD.''
+\scriptureref{Leviticus 27:30}
 \end{scripture}
 
 Tithing recognized God as owner of all things. It was not merely an economic rule but an act of worship --- the giving of the first and best.
@@ -1030,7 +1072,8 @@ Tithing recognized God as owner of all things. It was not merely an economic rul
 \end{enumerate}
 
 \begin{scripture}
-``I beseech you therefore, brethren, by the mercies of God, to present your bodies a living sacrifice.'' --- Romans 12:1
+``I beseech you therefore, brethren, by the mercies of God, to present your bodies a living sacrifice.''
+\scriptureref{Romans 12:1}
 \end{scripture}
 
 \section{Doctrinal Synthesis}
@@ -1046,11 +1089,13 @@ Tithing recognized God as owner of all things. It was not merely an economic rul
 \section{Closing Meditation}
 
 \begin{scripture}
-``Holy to the LORD.'' --- Leviticus 27:30
+``Holy to the LORD.''
+\scriptureref{Leviticus 27:30}
 \end{scripture}
 
 \begin{scripture}
-``For their sakes I sanctify Myself.'' --- John 17:19
+``For their sakes I sanctify Myself.''
+\scriptureref{John 17:19}
 \end{scripture}
 
 Leviticus begins with blood on the altar and ends with holiness to the Lord. The journey from guilt to glory, from offering to devotion, is complete in Christ.
@@ -1058,7 +1103,8 @@ Leviticus begins with blood on the altar and ends with holiness to the Lord. The
 He is the One who vowed, offered, redeemed, and devoted all to the Father --- and in Him, we too are called ``holy unto the Lord.''
 
 \begin{scripture}
-``The grace of God that brings salvation has appeared... teaching us to live soberly, righteously, and godly in this present world.'' --- Titus 2:11--12
+``The grace of God that brings salvation has appeared... teaching us to live soberly, righteously, and godly in this present world.''
+\scriptureref{Titus 2:11--12}
 \end{scripture}
 
 
@@ -1086,7 +1132,8 @@ Vows and Dedication & The Consecrated One \\
 \end{center}
 
 \begin{scripture}
-``These are a shadow of things to come, but the substance is of Christ.'' --- Colossians 2:17
+``These are a shadow of things to come, but the substance is of Christ.''
+\scriptureref{Colossians 2:17}
 \end{scripture}
 
 \vspace{1cm}
