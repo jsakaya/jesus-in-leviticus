@@ -10,10 +10,12 @@
 \usepackage{geometry}
 \geometry{
     a4paper,
-    margin=1in,
-    top=1.2in,
-    bottom=1.2in
+    margin=0.85in,
+    top=0.9in,
+    bottom=0.9in
 }
+
+\usepackage{needspace}
 
 \usepackage{titlesec}
 \usepackage{titletoc}
@@ -24,11 +26,11 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
 \usepackage{quoting}
 \usepackage{lettrine}
 \usepackage{microtype}
 \usepackage{setspace}
-\usepackage{pifont}
 \usepackage{hyperref}
 
 % ========== COLORS (Define before polyglossia) ==========
@@ -55,18 +57,18 @@
 % ========== CHAPTER AND SECTION FORMATTING ==========
 \titleformat{\chapter}[display]
     {\normalfont\huge\bfseries\color{chaptercolor}}
-    {\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{-10pt}{50pt}
+    {\chaptertitlename\ \thechapter}{12pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-20pt}{30pt}
 
 \titleformat{\section}
-    {\normalfont\Large\bfseries\color{sectioncolor}}
+    {\needspace{4\baselineskip}\normalfont\Large\bfseries\color{sectioncolor}}
     {\thesection}{1em}{}
-\titlespacing*{\section}{0pt}{2em}{1em}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
 
 \titleformat{\subsection}
-    {\normalfont\large\bfseries\color{sectioncolor}}
+    {\needspace{3\baselineskip}\normalfont\large\bfseries\color{sectioncolor}}
     {\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{1.5em}{0.8em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
 
 % ========== HEADER AND FOOTER ==========
 \pagestyle{fancy}
@@ -78,33 +80,24 @@
 \renewcommand{\footrulewidth}{0pt}
 
 % ========== SCRIPTURE ENVIRONMENT ==========
-\definecolor{scripturebg}{RGB}{248, 246, 242}
-
 \newenvironment{scripture}{%
-    \par\vspace{0.8em}%
+    \par\vspace{0.4em}%
     \begin{quote}%
     \itshape\color{quotecolor}%
-    \fontsize{10.5}{14}\selectfont%
+    \fontsize{10.5}{13}\selectfont%
 }{%
     \end{quote}%
-    \vspace{0.4em}%
+    \vspace{0.2em}%
 }
 
 % Scripture reference: right-aligned, small caps
 \newcommand{\scriptureref}[1]{%
-    \par\vspace{0.2em}%
+    \par\vspace{0.1em}%
     \hfill{\normalfont\footnotesize\textsc{--- #1}}%
 }
 
 % ========== HEBREW COMMAND ==========
 \newcommand{\heb}[1]{\texthebrew{#1}}
-
-% ========== SECTION BREAK COMMAND ==========
-\newcommand{\sectionbreak}{%
-    \par\vspace{1em}%
-    \noindent\hfil{\color{sectioncolor}\ding{107}}\hfil%
-    \par\vspace{1em}%
-}
 
 % ========== DOCUMENT ==========
 \begin{document}
@@ -112,11 +105,7 @@
 % ========== TITLE PAGE ==========
 \begin{titlepage}
     \centering
-    \vspace*{1.5cm}
-
-    {\Large\color{chaptercolor}\ding{167}\quad\ding{167}\quad\ding{167}}
-
-    \vspace{1cm}
+    \vspace*{2cm}
 
     {\Huge\bfseries\color{chaptercolor} Jesus in the Book of Leviticus\par}
     \vspace{0.5cm}
@@ -124,32 +113,24 @@
 
     \vspace{1.5cm}
 
-    {\color{chaptercolor}\rule{0.5\textwidth}{1pt}}
+    {\color{chaptercolor}\rule{0.4\textwidth}{0.8pt}}
 
     \vspace{1.5cm}
 
     {\large\scshape A Comprehensive Study Guide\par}
 
-    \vspace{1.8cm}
+    \vspace{1.5cm}
 
-    {\large Exploring the Christological Fulfillment\\[0.4cm]
+    {\large Exploring the Christological Fulfillment\\[0.3cm]
     of Every Shadow in the Third Book of Moses\par}
 
-    \vspace{2.5cm}
-
-    {\color{sectioncolor}\ding{107}}
-
-    \vspace{1cm}
+    \vspace{2cm}
 
     {\itshape\color{quotecolor} ``These are a shadow of things to come,\\
-    but the substance is of Christ.''\\[0.5cm]
+    but the substance is of Christ.''\\[0.4cm]
     \normalfont\small\textsc{--- Col.\ 2:17}\par}
 
     \vfill
-
-    {\color{sectioncolor}\rule{0.3\textwidth}{0.4pt}}
-
-    \vspace{0.8cm}
 
     {\large Course Handbook\par}
 
@@ -171,10 +152,10 @@
 \chapter{The Revelation of Christ in Leviticus}
 
 \begin{center}
-\textit{``You search the Scriptures, for in them you think you have eternal life; and these are they which testify of Me.''}\\[0.3em]
+\textit{``You search the Scriptures, for in them you think you have eternal life; and these are they which testify of Me.''}\\[0.2em]
 {\small\textsc{--- John\ 5:39}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{The Central Focus of the Bible}
 
@@ -413,10 +394,10 @@ All these anticipated ``the Lamb slain from the foundation of the world'' (Rev.\
 \chapter{The Offerings}
 
 \begin{center}
-\textit{``Behold! The Lamb of God who takes away the sin of the world!''}\\[0.3em]
+\textit{``Behold! The Lamb of God who takes away the sin of the world!''}\\[0.2em]
 {\small\textsc{--- John\ 1:29}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{The Incomprehensible Christ}
 
@@ -498,10 +479,10 @@ At Calvary, the fragrance of His obedience and the fire of judgment met in one p
 \chapter{The Priesthood}
 
 \begin{center}
-\textit{``We have such a High Priest, who is seated at the right hand of the throne of the Majesty in the heavens.''}\\[0.3em]
+\textit{``We have such a High Priest, who is seated at the right hand of the throne of the Majesty in the heavens.''}\\[0.2em]
 {\small\textsc{--- Heb.\ 8:1}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{The Eternal High Priest}
 
@@ -585,10 +566,10 @@ Future & Before the People (v.23b) & He shall appear apart from sin & 9:28 \\
 \chapter{The Day of Atonement}
 
 \begin{center}
-\textit{``By His own blood He entered the Most Holy Place once for all, having obtained eternal redemption.''}\\[0.3em]
+\textit{``By His own blood He entered the Most Holy Place once for all, having obtained eternal redemption.''}\\[0.2em]
 {\small\textsc{--- Heb.\ 9:12}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{The Pinnacle of Leviticus}
 
@@ -693,10 +674,10 @@ At the Cross, the blood of Christ satisfied the law beneath and revealed the glo
 \chapter{Laws of Cleansing and Holiness}
 
 \begin{center}
-\textit{``For I am the LORD your God: you shall therefore sanctify yourselves, and you shall be holy; for I am holy.''}\\[0.3em]
+\textit{``For I am the LORD your God: you shall therefore sanctify yourselves, and you shall be holy; for I am holy.''}\\[0.2em]
 {\small\textsc{--- Lev.\ 11:44}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{Introduction: The God Who Separates and Sanctifies}
 
@@ -797,10 +778,10 @@ Cleansing in Leviticus was ritual and repeated; in Christ, it is spiritual and c
 \chapter{The Feasts of the Lord}
 
 \begin{center}
-\textit{``But when the fullness of the time had come, God sent forth His Son, born of a woman, born under the law.''}\\[0.3em]
+\textit{``But when the fullness of the time had come, God sent forth His Son, born of a woman, born under the law.''}\\[0.2em]
 {\small\textsc{--- Gal.\ 4:4}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{God's Calendar of Redemption}
 
@@ -919,10 +900,10 @@ The trumpet blast symbolizes:
 \chapter{Sabbath and Jubilee}
 
 \begin{center}
-\textit{``Come to Me, all you who labor and are heavy laden, and I will give you rest.''}\\[0.3em]
+\textit{``Come to Me, all you who labor and are heavy laden, and I will give you rest.''}\\[0.2em]
 {\small\textsc{--- Matt.\ 11:28}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{The Rhythm of Divine Rest}
 
@@ -1049,10 +1030,10 @@ Christ is our eternal Jubilee. He releases us from sin's slavery, restores our l
 \chapter{Dedication and Vows}
 
 \begin{center}
-\textit{``I beseech you therefore, brethren, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your reasonable service.''}\\[0.3em]
+\textit{``I beseech you therefore, brethren, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God, which is your reasonable service.''}\\[0.2em]
 {\small\textsc{--- Rom.\ 12:1}}
 \end{center}
-\vspace{1.5em}
+\vspace{0.8em}
 
 \section{From Atonement to Dedication}
 
