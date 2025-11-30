@@ -1,0 +1,376 @@
+\documentclass[11pt,letterpaper,oneside]{book}
+
+% ============================================================================
+% MODERN MINIMALIST STYLE
+% Jesus in Leviticus Handbook
+% Clean, contemporary aesthetic with generous whitespace
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% TYPOGRAPHY & FONTS
+% ----------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Modern sans-serif font stack
+\usepackage{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Hebrew support - with font auto-detection
+\usepackage{fontspec}
+
+% Hebrew command - will use default monospace if Hebrew fonts unavailable
+\newcommand{\heb}[1]{%
+  \texttt{\footnotesize #1}%
+}
+
+% Generous line spacing for breathing room
+\usepackage{setspace}
+\setstretch{1.4}
+
+% ----------------------------------------------------------------------------
+% COLOR SCHEME - Monochromatic with Teal Accent
+% ----------------------------------------------------------------------------
+\usepackage{xcolor}
+
+% Grayscale palette
+\definecolor{charcoal}{HTML}{2C3E50}
+\definecolor{slate}{HTML}{4A5568}
+\definecolor{gray}{HTML}{718096}
+\definecolor{lightgray}{HTML}{CBD5E0}
+\definecolor{offwhite}{HTML}{F7FAFC}
+
+% Accent color - sophisticated teal
+\definecolor{accent}{HTML}{0D9488}
+\definecolor{accentlight}{HTML}{5EEAD4}
+
+% ----------------------------------------------------------------------------
+% PAGE LAYOUT - Asymmetric with generous margins
+% ----------------------------------------------------------------------------
+\usepackage[
+  letterpaper,
+  top=1.5in,
+  bottom=1.5in,
+  inner=1.5in,
+  outer=2.5in,
+  marginparwidth=1.8in,
+  marginparsep=0.3in
+]{geometry}
+
+% ----------------------------------------------------------------------------
+% HEADERS & FOOTERS - Minimal, clean
+% ----------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Clean header with just page number in margin
+\fancyhead[R]{\color{gray}\fontsize{9}{11}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Chapter pages: no header
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[R]{\color{gray}\fontsize{9}{11}\selectfont\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% ----------------------------------------------------------------------------
+% CHAPTER STYLING - Bold minimalist with large numerals
+% ----------------------------------------------------------------------------
+\usepackage{titlesec}
+
+% Chapter format: huge numeral, clean title
+\titleformat{\chapter}[display]
+  {\raggedright}
+  {\color{accent}\fontsize{80}{80}\selectfont\bfseries\thechapter}
+  {20pt}
+  {\fontsize{28}{34}\selectfont\bfseries\color{charcoal}}
+  [\vspace{10pt}{\color{lightgray}\titlerule[1.5pt]}]
+
+\titlespacing*{\chapter}{0pt}{0pt}{50pt}
+
+% Section format: clean, simple
+\titleformat{\section}
+  {\fontsize{18}{22}\selectfont\bfseries\color{charcoal}}
+  {}
+  {0pt}
+  {}
+  [\vspace{5pt}{\color{accentlight}\titlerule[1pt]}]
+
+\titlespacing*{\section}{0pt}{30pt}{15pt}
+
+% Subsection format: minimal
+\titleformat{\subsection}
+  {\fontsize{14}{18}\selectfont\bfseries\color{slate}}
+  {}
+  {0pt}
+  {}
+
+\titlespacing*{\subsection}{0pt}{20pt}{10pt}
+
+% Subsubsection format
+\titleformat{\subsubsection}
+  {\fontsize{12}{16}\selectfont\bfseries\color{slate}}
+  {}
+  {0pt}
+  {}
+
+\titlespacing*{\subsubsection}{0pt}{15pt}{8pt}
+
+% ----------------------------------------------------------------------------
+% TABLE OF CONTENTS - Clean and minimal
+% ----------------------------------------------------------------------------
+\usepackage{tocloft}
+
+\renewcommand{\cftchapfont}{\fontsize{14}{18}\selectfont\bfseries\color{charcoal}}
+\renewcommand{\cftchappagefont}{\fontsize{11}{14}\selectfont\color{gray}}
+\renewcommand{\cftsecfont}{\fontsize{11}{14}\selectfont\color{slate}}
+\renewcommand{\cftsecpagefont}{\fontsize{10}{13}\selectfont\color{gray}}
+\renewcommand{\cftsubsecfont}{\fontsize{10}{13}\selectfont\color{gray}}
+\renewcommand{\cftsubsecpagefont}{\fontsize{9}{12}\selectfont\color{lightgray}}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{3}
+
+\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforesecskip}{6pt}
+\setlength{\cftbeforesubsecskip}{3pt}
+
+% ----------------------------------------------------------------------------
+% LISTS - Clean with minimal decoration
+% ----------------------------------------------------------------------------
+\usepackage{enumitem}
+
+\setlist[itemize]{
+  leftmargin=*,
+  itemsep=8pt,
+  parsep=0pt,
+  topsep=10pt,
+  label={\color{accent}\textbullet}
+}
+
+\setlist[enumerate]{
+  leftmargin=*,
+  itemsep=8pt,
+  parsep=0pt,
+  topsep=10pt,
+  label={\color{accent}\arabic*.}
+}
+
+% ----------------------------------------------------------------------------
+% TABLES - Modern geometric styling
+% ----------------------------------------------------------------------------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+
+% Modern table styling
+\renewcommand{\arraystretch}{1.5}
+
+% Custom column types
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+% Table colors
+\usepackage{colortbl}
+\arrayrulecolor{lightgray}
+
+% Redefine booktabs rules for modern look
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{3pt}
+
+% ----------------------------------------------------------------------------
+% SCRIPTURE ENVIRONMENT - Clean quote block
+% ----------------------------------------------------------------------------
+\usepackage{framed}
+
+% Define a clean scripture environment
+\newenvironment{scripture}{%
+  \vspace{15pt}
+  \begin{leftbar}
+  \color{slate}
+  \itshape
+  \setstretch{1.3}
+  \fontsize{10.5}{14}\selectfont
+}{%
+  \end{leftbar}
+  \vspace{10pt}
+}
+
+% Custom left bar for scripture
+\renewenvironment{leftbar}{%
+  \def\FrameCommand{%
+    {\color{accent}\vrule width 3pt}%
+    \hspace{15pt}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+}{%
+  \endMakeFramed
+}
+
+% Scripture reference command - clean, small caps
+\newcommand{\scriptureref}[1]{%
+  \vspace{5pt}
+  \par\noindent
+  \hfill{\fontsize{9}{12}\selectfont\scshape\color{gray}#1}
+  \par
+}
+
+% ----------------------------------------------------------------------------
+% HYPERLINKS - Subtle and clean
+% ----------------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  citecolor=accent,
+  urlcolor=accent,
+  bookmarksdepth=2,
+  pdfborder={0 0 0}
+}
+
+% ----------------------------------------------------------------------------
+% PARAGRAPH SPACING - Generous whitespace
+% ----------------------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+
+% ----------------------------------------------------------------------------
+% TITLE PAGE CUSTOMIZATION
+% ----------------------------------------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcommand{\makemoderntitle}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+
+    % Clean geometric elements
+    \begin{tikzpicture}[remember picture,overlay]
+      % Vertical accent line
+      \draw[color=accent, line width=2pt]
+        ($(current page.north west)+(1in,-1in)$) --
+        ($(current page.south west)+(1in,1in)$);
+
+      % Horizontal accent at top
+      \draw[color=accentlight, line width=1pt]
+        ($(current page.north west)+(1.2in,-1in)$) --
+        ($(current page.north east)+(-1in,-1in)$);
+    \end{tikzpicture}
+
+    \vspace*{1.5in}
+
+    \raggedright
+    \hspace{0.5in}
+    \begin{minipage}{5in}
+      % Title
+      {\fontsize{48}{54}\selectfont\bfseries\color{charcoal}
+      JESUS\\[10pt]
+      IN\\[10pt]
+      LEVITICUS\par}
+
+      \vspace{30pt}
+
+      % Subtitle
+      {\fontsize{16}{22}\selectfont\color{slate}
+      Discovering Christ in the\\
+      Book of Holiness\par}
+
+      \vfill
+
+      % Tagline
+      {\fontsize{11}{16}\selectfont\itshape\color{gray}
+      From shadow to substance,\\
+      from ritual to reality,\\
+      from law to the Living Word\par}
+
+      \vspace{0.5in}
+
+      % Modern accent line
+      {\color{accent}\rule{2in}{2pt}}
+
+    \end{minipage}
+
+  \end{titlepage}
+  \cleardoublepage
+}
+
+% ----------------------------------------------------------------------------
+% DOCUMENT METADATA
+% ----------------------------------------------------------------------------
+\title{Jesus in Leviticus}
+\author{}
+\date{}
+
+% ----------------------------------------------------------------------------
+% ADDITIONAL PACKAGES
+% ----------------------------------------------------------------------------
+\usepackage{microtype} % Better typography
+\usepackage{graphicx}  % For any graphics
+
+% ----------------------------------------------------------------------------
+% BEGIN DOCUMENT
+% ----------------------------------------------------------------------------
+\begin{document}
+
+% Custom modern title page
+\makemoderntitle
+
+% Table of Contents - clean and minimal
+\tableofcontents
+\cleardoublepage
+
+% ----------------------------------------------------------------------------
+% MAIN CONTENT - Include chapter files
+% ----------------------------------------------------------------------------
+
+\input{chapter1_restored.tex}
+\input{chapter2_restored.tex}
+\input{chapter3_restored.tex}
+\input{chapter4_restored.tex}
+\input{chapter5_restored.tex}
+\input{chapter6_restored.tex}
+\input{chapter7_restored.tex}
+\input{chapter8_restored.tex}
+
+% ----------------------------------------------------------------------------
+% BACK MATTER
+% ----------------------------------------------------------------------------
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Conclusion}
+
+\chapter*{Conclusion}
+
+\vspace{20pt}
+
+{\fontsize{14}{18}\selectfont\color{slate}\itshape
+From the first sacrifice in Eden to the final Lamb upon the throne, one voice echoes through Scripture: redemption belongs to God alone.\par}
+
+\vspace{20pt}
+
+Leviticus is not a catalog of rituals but a revelation of Christ---the Holy One who calls sinners near, the High Priest who enters once for all, the Sacrifice that perfects forever those who draw near by faith.
+
+\begin{scripture}
+``Therefore He is also able to save to the uttermost those who come to God through Him, since He always lives to make intercession for them.''
+\scriptureref{Hebrews 7:25}
+\end{scripture}
+
+Every offering whispered His name. Every priest pointed to His priesthood. Every feast anticipated His fulfillment. The veil has been torn, the way opened, the blood applied.
+
+Now we come boldly to the throne of grace, not by merit but by mercy---not by works but by the finished work of the Lamb slain from the foundation of the world.
+
+\vspace{30pt}
+
+{\color{accent}\rule{3in}{2pt}}
+
+\vspace{20pt}
+
+{\fontsize{12}{16}\selectfont\scshape\color{gray}
+Soli Deo Gloria\par}
+
+\end{document}

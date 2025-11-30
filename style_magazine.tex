@@ -1,0 +1,358 @@
+\documentclass[11pt,letterpaper,twoside]{book}
+
+% ============================================================================
+% CONTEMPORARY MAGAZINE EDITORIAL STYLE
+% Bold, Dynamic, High-Impact Typography with Modern Color Scheme
+% ============================================================================
+
+% Core Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,positioning,calc}
+\usepackage{afterpage}
+
+% Typography - Magazine Editorial Mix
+\usepackage{ebgaramond}        % Elegant serif for body text
+\usepackage[scaled=0.95]{helvet}   % Clean sans-serif for headers
+
+% Page Layout - Magazine Style with Asymmetric Margins
+\geometry{
+    letterpaper,
+    top=0.75in,
+    bottom=1in,
+    inner=1.25in,
+    outer=0.75in,
+    marginparwidth=2in,
+    marginparsep=0.25in,
+    headsep=0.4in,
+    footskip=0.5in
+}
+
+% Color Scheme - Bold Contemporary Editorial
+\definecolor{MagBlack}{HTML}{1A1A1A}
+\definecolor{MagCrimson}{HTML}{DC143C}
+\definecolor{MagGold}{HTML}{D4AF37}
+\definecolor{MagGray}{HTML}{4A4A4A}
+\definecolor{MagLightGray}{HTML}{E8E8E8}
+\definecolor{MagWhite}{HTML}{FEFEFE}
+\definecolor{QuoteBox}{HTML}{F5F5F5}
+\definecolor{ScriptureBlue}{HTML}{1E3A5F}
+
+% Advanced Table Support
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+
+% Enhanced Lists
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=6pt,leftmargin=*}
+
+% Headers and Footers - Magazine Running Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Left page (even)
+\fancyhead[LE]{%
+    \color{MagGray}\sffamily\small\textbf{JESUS IN LEVITICUS}%
+}
+\fancyfoot[LE]{%
+    \color{MagCrimson}\sffamily\Large\textbf{\thepage}%
+}
+
+% Right page (odd)
+\fancyhead[RO]{%
+    \color{MagGray}\sffamily\small\textbf{\leftmark}%
+}
+\fancyfoot[RO]{%
+    \color{MagCrimson}\sffamily\Large\textbf{\thepage}%
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Chapter plain style for chapter opening pages
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyfoot[C]{\color{MagGray}\sffamily\large\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% Title Formatting - Bold Magazine Headlines
+\usepackage{titlesec}
+
+% Chapter - Full-Width Impact Design
+\titleformat{\chapter}[display]
+    {\normalfont\sffamily\bfseries\color{MagBlack}}
+    {\begin{tikzpicture}[remember picture,overlay]
+        % Bold geometric accent
+        \fill[MagCrimson] (0,0) rectangle (2cm,0.5cm);
+        \node[anchor=west,color=MagWhite] at (0.2cm,0.25cm)
+            {\fontsize{28}{32}\selectfont\thechapter};
+     \end{tikzpicture}}
+    {0pt}
+    {\Huge\raggedright}
+    [\vspace{0.5cm}{\color{MagGold}\titlerule[3pt]}]
+
+\titlespacing*{\chapter}{0pt}{-20pt}{30pt}
+
+% Section - Bold Sans-Serif All-Caps
+\titleformat{\section}
+    {\normalfont\sffamily\Large\bfseries\color{MagCrimson}}
+    {}
+    {0pt}
+    {\MakeUppercase}
+    [{\vspace{2pt}\color{MagGold}\titlerule[2pt]}]
+
+\titlespacing*{\section}{0pt}{24pt}{12pt}
+
+% Subsection - Strong Contemporary
+\titleformat{\subsection}
+    {\normalfont\sffamily\large\bfseries\color{MagGray}}
+    {}
+    {0pt}
+    {}
+
+\titlespacing*{\subsection}{0pt}{18pt}{8pt}
+
+% Subsubsection
+\titleformat{\subsubsection}
+    {\normalfont\sffamily\normalsize\bfseries\color{MagGray}}
+    {}
+    {0pt}
+    {}
+
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+% Scripture Environment - Magazine Pull-Quote Style
+\usepackage{mdframed}
+\usepackage{fontawesome5}
+
+\newenvironment{scripture}{%
+    \begin{mdframed}[
+        linewidth=0pt,
+        backgroundcolor=ScriptureBlue!5,
+        leftline=true,
+        linecolor=MagCrimson,
+        linewidth=4pt,
+        innerleftmargin=20pt,
+        innerrightmargin=20pt,
+        innertopmargin=15pt,
+        innerbottommargin=15pt,
+        skipabove=18pt,
+        skipbelow=18pt
+    ]
+    \color{ScriptureBlue}
+    \fontsize{12}{16}\selectfont
+    \itshape
+    \faQuoteLeft\hspace{0.3em}%
+}{%
+    \hspace{0.3em}\faQuoteRight
+    \end{mdframed}
+}
+
+\newcommand{\scriptureref}[1]{%
+    \par\vspace{6pt}
+    \raggedleft{\sffamily\small\bfseries\color{MagCrimson}--- #1}
+}
+
+% Hebrew Text Support
+\usepackage{cjhebrew}
+
+\newcommand{\heb}[1]{\textit{#1}}
+
+% Table Styling - Bold Magazine Tables
+\newcommand{\tableheadstyle}{\sffamily\bfseries\color{MagWhite}}
+\renewcommand{\arraystretch}{1.4}
+
+% Custom table environment with magazine styling
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{tabularx}{%
+    \rowcolors{2}{MagLightGray!50}{white}
+}
+\AfterEndEnvironment{tabularx}{%
+    \rowcolors{2}{}{white}
+}
+
+% Redefine toprule/midrule/bottomrule for color
+\let\oldtoprule\toprule
+\let\oldmidrule\midrule
+\let\oldbottomrule\bottomrule
+
+\renewcommand{\toprule}{%
+    \arrayrulecolor{MagCrimson}\oldtoprule\arrayrulecolor{black}%
+}
+\renewcommand{\midrule}{%
+    \arrayrulecolor{MagGold!60}\oldmidrule\arrayrulecolor{black}%
+}
+\renewcommand{\bottomrule}{%
+    \arrayrulecolor{MagCrimson}\oldbottomrule\arrayrulecolor{black}%
+}
+
+% Links and Cross-References
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+    pdftitle={Jesus in Leviticus: A Contemporary Study},
+    pdfauthor={Theological Magazine Editorial}
+}
+
+% Emphasize text with magazine style
+\renewcommand{\emph}[1]{\textit{\color{MagGray}#1}}
+
+% Pull quotes in margins (optional usage)
+\newcommand{\marginquote}[1]{%
+    \marginpar{%
+        \small\color{MagCrimson}\sffamily\bfseries
+        \raggedright #1
+    }%
+}
+
+% Geometric design elements
+\newcommand{\geometricdivider}{%
+    \par\vspace{12pt}
+    \centering
+    \begin{tikzpicture}
+        \fill[MagGold] (0,0) circle (0.08cm);
+        \fill[MagCrimson] (0.5,0) -- (1,0.15) -- (1,-0.15) -- cycle;
+        \fill[MagGray] (1.5,0) rectangle (2,0.15);
+    \end{tikzpicture}
+    \par\vspace{12pt}
+}
+
+% ============================================================================
+% DOCUMENT CONTENT
+% ============================================================================
+
+\begin{document}
+
+% ============================================================================
+% TITLE PAGE - Magazine Cover Style
+% ============================================================================
+
+\begin{titlepage}
+\pagecolor{MagBlack}
+\afterpage{\nopagecolor}
+
+\begin{tikzpicture}[remember picture,overlay]
+    % Bold geometric background elements
+    \fill[MagCrimson] (current page.north west) rectangle
+        ([xshift=3cm]current page.south west);
+
+    \fill[MagGold,opacity=0.3] ([xshift=5cm,yshift=-3cm]current page.north west)
+        -- ([xshift=8cm,yshift=-3cm]current page.north west)
+        -- ([xshift=8cm,yshift=-6cm]current page.north west)
+        -- cycle;
+
+    \fill[MagGray,opacity=0.2] ([xshift=-4cm,yshift=3cm]current page.south east)
+        circle (4cm);
+\end{tikzpicture}
+
+\vspace*{1in}
+
+\begin{flushleft}
+    {\color{MagGold}\sffamily\Large\bfseries CONTEMPORARY THEOLOGY}
+
+    \vspace{0.3cm}
+
+    {\color{MagWhite}\sffamily\fontsize{52}{60}\selectfont\bfseries
+    JESUS\\
+    IN\\
+    LEVITICUS}
+
+    \vspace{0.8cm}
+
+    {\color{MagLightGray}\sffamily\LARGE\itshape
+    The Revelation of Christ\\
+    in the Book of Holiness}
+
+    \vspace{1.5cm}
+
+    {\color{MagGold}\sffamily\Large
+    A Contemporary Study in Eight Sessions}
+
+    \vspace{0.5cm}
+
+    \begin{tikzpicture}
+        \draw[MagCrimson,line width=3pt] (0,0) -- (8,0);
+        \draw[MagGold,line width=1.5pt] (0,-0.2) -- (6,-0.2);
+    \end{tikzpicture}
+
+    \vfill
+
+    {\color{MagLightGray}\sffamily\large
+    \textit{``Behold! The Lamb of God who\\
+    takes away the sin of the world!''}\\[6pt]
+    \color{MagGold}\textbf{--- John 1:29}}
+\end{flushleft}
+
+\end{titlepage}
+
+\pagecolor{white}
+
+% ============================================================================
+% TABLE OF CONTENTS - Editorial Style
+% ============================================================================
+
+\tableofcontents
+\newpage
+
+% ============================================================================
+% CHAPTERS - Input from Existing Files
+% ============================================================================
+
+\input{chapter1_restored.tex}
+
+\input{chapter2_restored.tex}
+
+\input{chapter3_restored.tex}
+
+\input{chapter4_restored.tex}
+
+\input{chapter5_restored.tex}
+
+\input{chapter6_restored.tex}
+
+\input{chapter7_restored.tex}
+
+\input{chapter8_restored.tex}
+
+% ============================================================================
+% BACK MATTER
+% ============================================================================
+
+\clearpage
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[MagCrimson] (current page.north west) rectangle
+        ([yshift=-2cm]current page.north east);
+    \node[anchor=center,color=MagWhite,font=\sffamily\Huge\bfseries]
+        at ([yshift=-1cm]current page.north) {THE END};
+\end{tikzpicture}
+
+\vfill
+
+\begin{center}
+    {\color{MagGray}\sffamily\Large\itshape
+    ``To Him who loved us and washed us\\
+    from our sins in His own blood...\\
+    to Him be glory and dominion forever.''}
+
+    \vspace{0.5cm}
+
+    {\color{MagCrimson}\sffamily\large\bfseries
+    --- Revelation 1:5--6}
+\end{center}
+
+\vfill
+
+\end{document}

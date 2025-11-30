@@ -1,0 +1,504 @@
+\documentclass[11pt,letterpaper]{book}
+
+% ============================================================================
+% ELEGANT DEVOTIONAL STYLE - JESUS IN LEVITICUS
+% A warm, contemplative presentation inviting spiritual reflection
+% ============================================================================
+
+% -------------------------
+% FONT PACKAGES
+% -------------------------
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+% Elegant serif fonts for devotional reading
+% Using Palatino (available on macOS) for elegant, readable text
+\setmainfont{Palatino}[
+    Scale = 1.05
+]
+
+% Secondary font for emphasis
+\newfontfamily\titlefont{Palatino}[
+    Scale = 1.2,
+    LetterSpace = 3.0
+]
+
+% Hebrew text support - using Arial Unicode MS which is widely available
+\newfontfamily\hebrewfont{Arial Unicode MS}[Script=Hebrew]
+
+% -------------------------
+% PAGE LAYOUT - Comfortable Reading
+% -------------------------
+\usepackage[
+    letterpaper,
+    top=1.2in,
+    bottom=1.2in,
+    left=1.3in,
+    right=1.3in,
+    marginparwidth=1in
+]{geometry}
+
+% -------------------------
+% WARM COLOR PALETTE
+% -------------------------
+\usepackage{xcolor}
+
+% Devotional colors - warm, contemplative
+\definecolor{burgundy}{RGB}{112,41,59}          % Deep burgundy for headings
+\definecolor{softburgundy}{RGB}{139,69,85}      % Softer burgundy
+\definecolor{cream}{RGB}{255,253,245}            % Warm cream background
+\definecolor{warmgold}{RGB}{184,134,11}          % Rich gold for accents
+\definecolor{forestgreen}{RGB}{34,85,68}         % Deep forest green
+\definecolor{terracotta}{RGB}{139,85,74}         % Warm terracotta
+\definecolor{sagegreen}{RGB}{120,134,107}        % Soft sage green
+\definecolor{warmgray}{RGB}{95,87,79}            % Warm gray for body text
+
+% Set page background to warm cream
+\pagecolor{cream}
+
+% Body text in warm gray for comfortable reading
+\color{warmgray}
+
+% -------------------------
+% TYPOGRAPHY & SPACING
+% -------------------------
+\usepackage{microtype}              % Better typography
+\usepackage{setspace}               % Line spacing
+\setstretch{1.4}                    % Generous line spacing for meditation
+
+\usepackage{ragged2e}               % Better text justification
+\setlength{\parindent}{1.5em}       % Elegant paragraph indentation
+\setlength{\parskip}{0.5em}         % Gentle paragraph spacing
+
+% -------------------------
+% DECORATIVE ELEMENTS
+% -------------------------
+\usepackage{pgfornament}            % Ornamental decorations
+\usepackage{adforn}                 % Additional ornaments
+\usepackage{fourier-orns}           % Classical ornaments
+
+% -------------------------
+% HEADERS AND FOOTERS
+% -------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyhead[LE,RO]{\small\itshape\textcolor{burgundy}{\nouppercase{\leftmark}}}
+\fancyfoot[C]{\textcolor{burgundy}{\pgfornament[width=0.5cm]{85}}\quad\small\textcolor{burgundy}{\thepage}\quad\textcolor{burgundy}{\pgfornament[width=0.5cm,symmetry=v]{85}}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Chapter pages
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\textcolor{burgundy}{\pgfornament[width=0.5cm]{85}}\quad\small\textcolor{burgundy}{\thepage}\quad\textcolor{burgundy}{\pgfornament[width=0.5cm,symmetry=v]{85}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% -------------------------
+% CHAPTER STYLING
+% -------------------------
+\usepackage{titlesec}
+
+% Graceful chapter titles with ornamental decorations
+\titleformat{\chapter}[display]
+    {\centering\titlefont\huge\color{burgundy}}
+    {}
+    {0pt}
+    {%
+        \vspace{-30pt}%
+        {\color{warmgold}\pgfornament[width=4cm]{88}}\\[15pt]%
+        \MakeUppercase{\chaptertitlename}~\thechapter\\[10pt]%
+    }
+    [%
+        \vspace{5pt}%
+        {\color{warmgold}\pgfornament[width=3cm]{87}}%
+    ]
+
+\titlespacing*{\chapter}{0pt}{20pt}{40pt}
+
+% Section styling with decorative underlines
+\titleformat{\section}
+    {\titlefont\Large\color{burgundy}}
+    {\thesection}
+    {1em}
+    {}
+    [\vspace{-10pt}{\color{warmgold}\pgfornament[width=2cm]{88}}]
+
+\titlespacing*{\section}{0pt}{20pt}{15pt}
+
+% Subsection styling
+\titleformat{\subsection}
+    {\titlefont\large\color{softburgundy}}
+    {\thesubsection}
+    {1em}
+    {}
+    [\vspace{-8pt}{\color{sagegreen}\rule{1.5in}{0.5pt}}]
+
+\titlespacing*{\subsection}{0pt}{15pt}{10pt}
+
+% Subsubsection styling
+\titleformat{\subsubsection}
+    {\titlefont\normalsize\color{terracotta}}
+    {\thesubsubsection}
+    {1em}
+    {}
+
+% -------------------------
+% DROP CAPS
+% -------------------------
+\usepackage{lettrine}
+
+% Elegant drop caps with floral styling
+\renewcommand{\LettrineFontHook}{\color{burgundy}\titlefont}
+\setlength{\DefaultNindent}{0pt}
+\setlength{\DefaultFindent}{3pt}
+
+% -------------------------
+% SCRIPTURE ENVIRONMENT
+% -------------------------
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,patterns}
+
+% Beautiful scripture environment for devotional reading
+\newenvironment{scripture}{%
+    \par\vspace{10pt}%
+    \begin{center}%
+    \begin{minipage}{0.85\textwidth}%
+        \setstretch{1.5}%
+        \itshape\large\color{forestgreen}%
+        \leftskip=1em\rightskip=1em%
+        % Decorative opening quotation
+        {\fontsize{36pt}{36pt}\selectfont\color{warmgold}\textquotedblleft}%
+        \hspace{-0.3em}%
+}{%
+        % Decorative closing quotation
+        \hspace{0.2em}{\fontsize{36pt}{36pt}\selectfont\color{warmgold}\textquotedblright}%
+    \end{minipage}%
+    \end{center}%
+    \par\vspace{5pt}%
+}
+
+% Scripture reference in elegant small caps
+\newcommand{\scriptureref}[1]{%
+    \par\vspace{-5pt}%
+    \begin{center}%
+        {\small\scshape\color{burgundy}#1}%
+    \end{center}%
+    \par\vspace{10pt}%
+}
+
+% -------------------------
+% TABLES
+% -------------------------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+
+% Warm table styling
+\arrayrulecolor{warmgold}
+
+% Custom column types
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% -------------------------
+% LISTS
+% -------------------------
+\usepackage{enumitem}
+
+% Elegant list styling with decorative bullets
+\setlist[itemize,1]{
+    label={\color{warmgold}\adforn{17}},
+    leftmargin=2em,
+    itemsep=0.5em,
+    parsep=0.3em
+}
+
+\setlist[enumerate,1]{
+    label={\color{burgundy}\arabic*.},
+    leftmargin=2em,
+    itemsep=0.5em,
+    parsep=0.3em
+}
+
+% -------------------------
+% HYPERLINKS
+% -------------------------
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=burgundy,
+    urlcolor=forestgreen,
+    citecolor=terracotta,
+    pdfauthor={Devotional Study},
+    pdftitle={Jesus in Leviticus - Elegant Devotional Edition},
+    pdfsubject={Biblical Study},
+    pdfkeywords={Jesus, Leviticus, Typology, Devotional}
+}
+
+% -------------------------
+% ORNAMENTAL DIVIDERS
+% -------------------------
+
+% Section divider with vine motif
+\newcommand{\vinedivider}{%
+    \par\vspace{10pt}%
+    \begin{center}%
+        {\color{sagegreen}\pgfornament[width=2.5cm]{85}}%
+    \end{center}%
+    \par\vspace{10pt}%
+}
+
+% Simple cross divider
+\newcommand{\crossdivider}{%
+    \par\vspace{10pt}%
+    \begin{center}%
+        {\color{burgundy}\Large\textdagger}%
+    \end{center}%
+    \par\vspace{10pt}%
+}
+
+% Wheat sheaf divider
+\newcommand{\wheatdivider}{%
+    \par\vspace{10pt}%
+    \begin{center}%
+        {\color{warmgold}\pgfornament[width=2cm]{88}}%
+    \end{center}%
+    \par\vspace{10pt}%
+}
+
+% -------------------------
+% DECORATIVE QUOTE BOXES
+% -------------------------
+\usepackage{mdframed}
+
+\newmdenv[
+    linecolor=warmgold,
+    backgroundcolor=cream,
+    linewidth=1.5pt,
+    roundcorner=5pt,
+    innertopmargin=15pt,
+    innerbottommargin=15pt,
+    innerrightmargin=15pt,
+    innerleftmargin=15pt,
+    skipabove=15pt,
+    skipbelow=15pt
+]{devotionalbox}
+
+% -------------------------
+% GRAPHICS
+% -------------------------
+\usepackage{graphicx}
+
+% -------------------------
+% MATHEMATICAL SYMBOLS (for arrows, etc.)
+% -------------------------
+\usepackage{amsmath}
+% Note: amssymb not needed as unicode-math provides these symbols
+
+% -------------------------
+% SPECIAL TYPOGRAPHY
+% -------------------------
+
+% Emphasis command for spiritual terms
+\newcommand{\spiritual}[1]{\textit{\color{forestgreen}#1}}
+
+% Sacred name styling
+\newcommand{\LORD}{\textsc{Lord}}
+
+% -------------------------
+% BIDIRECTIONAL TEXT SUPPORT
+% -------------------------
+% IMPORTANT: bidi package must be loaded LAST, after all other packages
+\usepackage{bidi}
+
+% Hebrew text command for right-to-left text
+\newcommand{\heb}[1]{{\hebrewfont\RL{#1}}}
+
+% Command for double arrow that works with bidi
+% Using Unicode character instead of math mode
+\newcommand{\doublearrow}{↔}
+
+% ============================================================================
+% DOCUMENT BEGINS
+% ============================================================================
+
+\begin{document}
+
+% -------------------------
+% TITLE PAGE
+% -------------------------
+
+\thispagestyle{empty}
+
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+
+% Ornamental top decoration
+{\color{warmgold}\pgfornament[width=6cm]{88}}
+
+\vspace{1.5cm}
+
+% Title
+{\titlefont\Huge\color{burgundy}\MakeUppercase{Jesus in Leviticus}}
+
+\vspace{0.5cm}
+
+{\color{warmgold}\pgfornament[width=3cm]{87}}
+
+\vspace{0.5cm}
+
+% Subtitle
+{\titlefont\Large\color{terracotta}\itshape Beholding the Lamb of God\\in the Book of Holiness}
+
+\vspace{1cm}
+
+% Central lamb symbol using ornament
+{\color{burgundy}\pgfornament[width=4cm,scale=2]{81}}
+
+\vspace{1cm}
+
+% Scripture verse on title page
+\begin{minipage}{0.7\textwidth}
+\centering
+\itshape\large\color{forestgreen}
+\leftskip=1em\rightskip=1em
+``Behold! The Lamb of God who takes away the sin of the world!''
+
+\vspace{0.3cm}
+
+{\small\scshape\color{burgundy}John 1:29}
+\end{minipage}
+
+\vspace{1.5cm}
+
+% Bottom ornamental decoration
+{\color{warmgold}\pgfornament[width=5cm]{88}}
+
+\vspace{0.5cm}
+
+% Cross symbol
+{\color{burgundy}\Huge\textdagger}
+
+\vspace{0.5cm}
+
+{\color{sagegreen}\pgfornament[width=4cm]{85}}
+
+\vfill
+
+% Publication note
+{\small\color{warmgray}\itshape Elegant Devotional Edition}
+
+\end{titlepage}
+
+% -------------------------
+% TABLE OF CONTENTS
+% -------------------------
+
+\clearpage
+\thispagestyle{empty}
+
+\vspace*{1cm}
+
+\begin{center}
+{\titlefont\LARGE\color{burgundy}\MakeUppercase{Contents}}
+
+\vspace{0.3cm}
+
+{\color{warmgold}\pgfornament[width=3cm]{88}}
+\end{center}
+
+\vspace{1cm}
+
+% TOC styling
+\renewcommand{\contentsname}{}
+\setcounter{tocdepth}{2}
+
+\makeatletter
+\renewcommand{\@dotsep}{2}
+\renewcommand{\l@chapter}[2]{%
+    \vspace{8pt}%
+    {\color{burgundy}\titlefont\large #1}%
+    \hfill%
+    {\color{burgundy}\titlefont\large #2}%
+    \par%
+}
+\renewcommand{\l@section}[2]{%
+    \vspace{3pt}%
+    \hspace{1em}%
+    {\color{warmgray}\itshape #1}%
+    \nobreak\leaders\hbox{$\m@th\mkern 2.5mu\hbox{\color{warmgold}.}\mkern 2.5mu$}\hfill\nobreak%
+    {\color{warmgray} #2}%
+    \par%
+}
+\makeatother
+
+\tableofcontents
+
+% -------------------------
+% MAIN CONTENT
+% -------------------------
+
+\clearpage
+\setcounter{page}{1}
+
+% Include all chapter files
+\input{chapter1_restored.tex}
+\input{chapter2_restored.tex}
+\input{chapter3_restored.tex}
+\input{chapter4_restored.tex}
+\input{chapter5_restored.tex}
+\input{chapter6_restored.tex}
+\input{chapter7_restored.tex}
+\input{chapter8_restored.tex}
+
+% -------------------------
+% CLOSING PAGE
+% -------------------------
+
+\cleardoublepage
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\begin{center}
+
+{\color{warmgold}\pgfornament[width=4cm]{88}}
+
+\vspace{1cm}
+
+{\titlefont\Large\color{burgundy}\itshape To Him who loved us and washed us\\from our sins in His own blood}
+
+\vspace{0.5cm}
+
+{\color{burgundy}\Large\textdagger}
+
+\vspace{0.5cm}
+
+{\titlefont\Large\color{burgundy}\itshape To Him be glory and dominion\\forever and ever}
+
+\vspace{0.5cm}
+
+{\titlefont\large\color{terracotta} Amen}
+
+\vspace{1cm}
+
+{\color{warmgold}\pgfornament[width=4cm]{88}}
+
+\vspace{1cm}
+
+{\small\scshape\color{burgundy}Revelation 1:5--6}
+
+\end{center}
+
+\vspace*{\fill}
+
+\end{document}

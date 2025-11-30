@@ -1,0 +1,443 @@
+% ======================================================================
+% ILLUMINATED MANUSCRIPT STYLE
+% Jesus in Leviticus Handbook
+% Medieval/Renaissance Manuscript Aesthetic
+% ======================================================================
+
+\documentclass[11pt,twoside,openright]{book}
+
+% ======================================================================
+% PACKAGES
+% ======================================================================
+
+% Font and Typography
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ebgaramond}              % Medieval-style old-style serif
+\usepackage{ebgaramond-maths}        % Mathematics support
+\usepackage[cal=boondoxo]{mathalfa}  % Calligraphic headers
+
+% Hebrew Support (placeholder - will render as transliteration if font unavailable)
+\newcommand{\texthebrew}[1]{\textit{#1}}
+
+% Page Layout
+\usepackage[
+    paperwidth=7in,
+    paperheight=10in,
+    top=1.2in,
+    bottom=1.2in,
+    inner=1in,
+    outer=0.85in,
+    marginparwidth=0.6in
+]{geometry}
+
+% Colors - Rich Medieval Palette
+\usepackage{xcolor}
+\definecolor{burgundy}{RGB}{128,0,32}        % Deep burgundy for headings
+\definecolor{goldochre}{RGB}{204,153,0}      % Rich gold
+\definecolor{deepblue}{RGB}{25,25,112}       % Midnight blue
+\definecolor{forestgreen}{RGB}{34,139,34}    % Forest green
+\definecolor{parchment}{RGB}{255,250,240}    % Parchment background
+\definecolor{sepia}{RGB}{112,66,20}          % Sepia brown
+\definecolor{vermillion}{RGB}{227,66,52}     % Red accents
+\definecolor{royalpurple}{RGB}{102,0,102}    % Royal purple
+
+% Graphics and Ornaments
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfornament}                     % Medieval ornaments
+\usetikzlibrary{calc,decorations.pathmorphing,patterns,shapes.geometric}
+
+% Drop Caps - Illuminated Letters
+\usepackage{lettrine}
+\usepackage{Zallman}                         % Decorative drop cap font
+
+% Tables
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+
+% Boxes and Frames
+\usepackage[most]{tcolorbox}
+\usepackage{mdframed}
+
+% Spacing and Layout
+\usepackage{setspace}
+\usepackage{microtype}                       % Better typography
+\usepackage{ragged2e}
+
+% Headers and Footers
+\usepackage{fancyhdr}
+
+% Hyperlinks (hidden for print aesthetic)
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+    hidelinks,
+    pdfborder={0 0 0}
+}
+
+% ======================================================================
+% PAGE BACKGROUND - PARCHMENT EFFECT
+% ======================================================================
+
+% Simple parchment color background
+\pagecolor{parchment}
+
+% ======================================================================
+% TYPOGRAPHY SETTINGS
+% ======================================================================
+
+\setstretch{1.15}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.35em}
+
+% ======================================================================
+% CHAPTER AND SECTION FORMATTING
+% ======================================================================
+
+\usepackage{titlesec}
+
+% Chapter formatting - Illuminated style
+\newcommand{\chapterornament}{\pgfornament[width=8cm,color=goldochre]{88}}
+\newcommand{\chapterdivider}{\pgfornament[width=6cm,color=burgundy]{85}}
+
+\titleformat{\chapter}[display]
+    {\centering\Huge\bfseries\color{burgundy}}
+    {\chapterornament\\[1em]\fontsize{36}{40}\selectfont\color{deepblue}\textsc{Chapter \thechapter}}
+    {1em}
+    {}
+    [\vspace{0.5em}\chapterdivider]
+
+% Section formatting
+\titleformat{\section}
+    {\Large\bfseries\color{burgundy}}
+    {\pgfornament[scale=0.15,color=goldochre]{61}\quad\thesection}
+    {0.5em}
+    {}
+    [\vspace{0.3em}{\color{goldochre}\titlerule[1pt]}]
+
+% Subsection formatting
+\titleformat{\subsection}
+    {\large\bfseries\color{deepblue}}
+    {\pgfornament[scale=0.12,color=forestgreen]{14}\quad\thesubsection}
+    {0.5em}
+    {}
+
+% Subsubsection formatting
+\titleformat{\subsubsection}
+    {\normalsize\bfseries\color{forestgreen}}
+    {\thesubsubsection}
+    {0.5em}
+    {}
+
+% ======================================================================
+% HEADER AND FOOTER - MEDIEVAL MANUSCRIPT STYLE
+% ======================================================================
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header ornaments and text
+\fancyhead[LE]{%
+    \small\color{sepia}\textit{\leftmark}%
+    \quad\pgfornament[scale=0.08,color=goldochre]{11}%
+}
+\fancyhead[RO]{%
+    \pgfornament[scale=0.08,color=goldochre]{11}\quad%
+    \small\color{sepia}\textit{\rightmark}%
+}
+
+% Footer with page numbers
+\fancyfoot[LE,RO]{%
+    \color{burgundy}\textbf{\thepage}%
+}
+\fancyfoot[C]{%
+    \pgfornament[scale=0.1,color=goldochre]{75}%
+}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{{\color{goldochre}\hrule height 0.5pt}}
+
+% ======================================================================
+% CUSTOM ENVIRONMENTS
+% ======================================================================
+
+% Scripture Environment - Illuminated Box
+\newenvironment{scripture}{%
+    \begin{tcolorbox}[
+        enhanced,
+        colback=white!95!goldochre,
+        colframe=burgundy,
+        arc=2mm,
+        boxrule=1.5pt,
+        left=15pt,
+        right=15pt,
+        top=10pt,
+        bottom=10pt,
+        fontupper=\itshape\color{sepia},
+        before skip=1em,
+        after skip=1em,
+        overlay={%
+            \node[anchor=north west,inner sep=3pt] at (frame.north west) {%
+                \pgfornament[scale=0.2,color=goldochre]{61}%
+            };
+            \node[anchor=north east,inner sep=3pt] at (frame.north east) {%
+                \pgfornament[scale=0.2,color=goldochre,symmetry=v]{61}%
+            };
+            \node[anchor=south west,inner sep=3pt] at (frame.south west) {%
+                \pgfornament[scale=0.2,color=goldochre,symmetry=h]{61}%
+            };
+            \node[anchor=south east,inner sep=3pt] at (frame.south east) {%
+                \pgfornament[scale=0.2,color=goldochre,symmetry=c]{61}%
+            };
+        }
+    ]
+    \begin{quote}
+}{%
+    \end{quote}
+    \end{tcolorbox}
+}
+
+% Scripture reference command
+\newcommand{\scriptureref}[1]{%
+    \vspace{0.3em}
+    \begin{flushright}
+        \small\textsc{\color{deepblue}--- #1}
+    \end{flushright}
+}
+
+% Hebrew command
+\newcommand{\heb}[1]{%
+    \texthebrew{#1}%
+}
+
+% Arrow command for type/antitype relationships
+\newcommand{\doublearrow}{$\Rightarrow$}
+
+% ======================================================================
+% DROP CAPS - ILLUMINATED INITIALS
+% ======================================================================
+
+\renewcommand{\LettrineFontHook}{\Zallmanfamily\color{vermillion}}
+\setcounter{DefaultLines}{3}
+\renewcommand{\DefaultLoversize}{0.15}
+\renewcommand{\DefaultLraise}{0}
+\setlength{\DefaultFindent}{3pt}
+\setlength{\DefaultNindent}{0pt}
+
+% ======================================================================
+% TABLE STYLING - ORNATE MEDIEVAL TABLES
+% ======================================================================
+
+% Custom colors for table headers (use \rowcolor{burgundy!80} in tables manually)
+% Tables use standard booktabs styling
+
+% ======================================================================
+% DECORATIVE DIVIDERS
+% ======================================================================
+
+\newcommand{\ornamentdivider}{%
+    \begin{center}
+        \vspace{0.5em}
+        \pgfornament[width=4cm,color=goldochre]{88}
+        \vspace{0.5em}
+    \end{center}
+}
+
+\newcommand{\smalldivider}{%
+    \begin{center}
+        \vspace{0.3em}
+        \pgfornament[width=2cm,color=burgundy]{75}
+        \vspace{0.3em}
+    \end{center}
+}
+
+% ======================================================================
+% ITEMIZE AND ENUMERATE CUSTOMIZATION
+% ======================================================================
+
+\usepackage{enumitem}
+
+\setlist[itemize]{
+    label={\color{goldochre}\pgfornament[scale=0.06]{12}},
+    leftmargin=2em,
+    itemsep=0.3em
+}
+
+\setlist[enumerate]{
+    label={\color{burgundy}\bfseries\arabic*.},
+    leftmargin=2em,
+    itemsep=0.3em
+}
+
+% ======================================================================
+% TITLE PAGE - ILLUMINATED BOOK OF HOURS STYLE
+% ======================================================================
+
+\newcommand{\illuminatedtitle}{%
+    \begin{titlepage}
+        \pagecolor{parchment}
+
+        % Top ornament
+        \begin{center}
+            \vspace*{1cm}
+            \pgfornament[width=12cm,color=burgundy]{88}
+        \end{center}
+
+        \vspace{1.5cm}
+
+        % Main title
+        \begin{center}
+            \begin{tcolorbox}[
+                enhanced,
+                colback=white!98!goldochre,
+                colframe=burgundy,
+                arc=3mm,
+                boxrule=2pt,
+                width=0.85\textwidth,
+                left=10pt,
+                right=10pt,
+                top=15pt,
+                bottom=15pt,
+                overlay={%
+                    \node[anchor=north west,inner sep=5pt] at (frame.north west) {%
+                        \pgfornament[scale=0.3,color=goldochre]{63}%
+                    };
+                    \node[anchor=north east,inner sep=5pt] at (frame.north east) {%
+                        \pgfornament[scale=0.3,color=goldochre,symmetry=v]{63}%
+                    };
+                    \node[anchor=south west,inner sep=5pt] at (frame.south west) {%
+                        \pgfornament[scale=0.3,color=goldochre,symmetry=h]{63}%
+                    };
+                    \node[anchor=south east,inner sep=5pt] at (frame.south east) {%
+                        \pgfornament[scale=0.3,color=goldochre,symmetry=c]{63}%
+                    };
+                }
+            ]
+                \begin{center}
+                    {\Huge\bfseries\color{burgundy}\textsc{Jesus in Leviticus}}
+
+                    \vspace{0.5cm}
+
+                    \pgfornament[width=6cm,color=deepblue]{85}
+
+                    \vspace{0.5cm}
+
+                    {\Large\itshape\color{deepblue}The Revelation of Christ}
+
+                    {\Large\itshape\color{deepblue}in the Book of Holiness}
+
+                    \vspace{0.8cm}
+
+                    \begin{tcolorbox}[
+                        colback=burgundy!10,
+                        colframe=goldochre,
+                        arc=2mm,
+                        boxrule=1pt,
+                        width=0.9\textwidth,
+                        left=10pt,
+                        right=10pt
+                    ]
+                        \centering\itshape\color{sepia}
+                        ``You search the Scriptures, for in them you think\\
+                        you have eternal life; and these are they which\\
+                        testify of Me.''
+
+                        \vspace{0.3em}
+
+                        \small\textsc{--- John 5:39}
+                    \end{tcolorbox}
+                \end{center}
+            \end{tcolorbox}
+        \end{center}
+
+        \vspace{2cm}
+
+        % Central ornament
+        \begin{center}
+            \pgfornament[width=8cm,color=goldochre]{88}
+        \end{center}
+
+        \vfill
+
+        % Bottom ornament
+        \begin{center}
+            \pgfornament[width=10cm,color=burgundy]{88}
+
+            \vspace{0.5cm}
+
+            {\large\color{sepia}\textit{A Handbook for Biblical Study}}
+        \end{center}
+
+        \vspace{1cm}
+    \end{titlepage}
+
+    % Restore normal page color
+    \nopagecolor
+}
+
+% ======================================================================
+% DOCUMENT BEGINS
+% ======================================================================
+
+\begin{document}
+
+% Title page
+\illuminatedtitle
+
+% Table of Contents - Illuminated Style
+\tableofcontents
+\newpage
+
+% ======================================================================
+% INCLUDE CHAPTER FILES
+% ======================================================================
+
+\input{chapter1_restored.tex}
+\input{chapter2_restored.tex}
+\input{chapter3_restored.tex}
+\input{chapter4_restored.tex}
+\input{chapter5_restored.tex}
+\input{chapter6_restored.tex}
+\input{chapter7_restored.tex}
+\input{chapter8_restored.tex}
+
+% ======================================================================
+% COLOPHON - CLOSING PAGE
+% ======================================================================
+
+\cleardoublepage
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\begin{center}
+    \pgfornament[width=6cm,color=burgundy]{88}
+
+    \vspace{1cm}
+
+    {\Large\itshape\color{sepia}Soli Deo Gloria}
+
+    \vspace{0.5cm}
+
+    \smalldivider
+
+    \vspace{0.5cm}
+
+    {\small\color{sepia}
+    This illuminated manuscript was prepared\\
+    to the glory of God and for the edification\\
+    of His Church.
+    }
+
+    \vspace{1cm}
+
+    \pgfornament[width=6cm,color=goldochre]{88}
+\end{center}
+
+\vspace*{\fill}
+
+\end{document}
