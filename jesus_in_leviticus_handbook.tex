@@ -26,11 +26,13 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{enumitem}
-\setlist{itemsep=0.3em,leftmargin=*}
+\setlist{itemsep=0.15em,topsep=0.3em,parsep=0pt,leftmargin=2em}
 \usepackage{quoting}
 \usepackage{lettrine}
 \usepackage{microtype}
 \usepackage{setspace}
+\usepackage{eso-pic}
+\usepackage{float}
 \usepackage{hyperref}
 
 % ========== COLORS (Define before polyglossia) ==========
@@ -81,13 +83,19 @@
 
 % ========== SCRIPTURE ENVIRONMENT ==========
 \newenvironment{scripture}{%
-    \par\vspace{0.6em}%
-    \begin{quote}%
-    \itshape\color{quotecolor}%
+    \par\vspace{0.5em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{2em}%
+        \setlength{\rightmargin}{2em}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\parsep}{0pt}%
+    }%
+    \item\relax\itshape\color{quotecolor}%
     \fontsize{10.5}{14}\selectfont%
 }{%
-    \end{quote}%
-    \vspace{0.4em}%
+    \end{list}%
+    \vspace{0.3em}%
 }
 
 % Scripture reference: right-aligned, small caps
@@ -101,10 +109,27 @@
 
 % ========== DOCUMENT ==========
 \begin{document}
+\renewcommand{\chaptername}{Lesson}
 
-% ========== TITLE PAGE ==========
-\begin{titlepage}
-    \centering
+% ========== PAGE 1: Full-page image title ==========
+\newpage
+\thispagestyle{empty}
+\AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{title-page.jpg}%
+    }%
+}
+\null
+\clearpage
+
+% ========== PAGE 2: Blank page ==========
+\thispagestyle{empty}
+\null
+\clearpage
+
+% ========== PAGE 3: Text title page ==========
+\thispagestyle{empty}
+\begin{center}
     \vspace*{2cm}
 
     {\Huge\bfseries\color{chaptercolor} Jesus in the Book of Leviticus\par}
@@ -135,8 +160,8 @@
     {\large Course Handbook\par}
 
     \vspace{0.5cm}
-
-\end{titlepage}
+\end{center}
+\clearpage
 
 % ========== TABLE OF CONTENTS ==========
 \frontmatter
@@ -144,6 +169,8 @@
 \newpage
 
 % ========== MAIN CONTENT ==========
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
 \mainmatter
 
 % ====================================================================
